@@ -18,12 +18,12 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <button
       onClick={() => onClick && onClick(id)}
-      className={`px-4 py-2 rounded focus:outline-none flex ${
+      className={`px-4 py-4 rounded-full focus:outline-none flex ${
         activeButtonId === id ? "bg-black text-white" : "text-gray-500"
       }`}
     >
       {icon}
-      <span className="ml-2">{text}</span>
+      <span className="ml-2 font-bold">{text}</span>
     </button>
   );
 };

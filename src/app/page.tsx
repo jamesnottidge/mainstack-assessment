@@ -1,4 +1,3 @@
-import TransactionProvider from "@/contexts/TransactionContext";
 import Image from "next/image";
 import Chart from "@/components/layout/Chart/Chart";
 import Withdraw from "@/components/layout/Chart/Withdraw";
@@ -10,18 +9,18 @@ import Overlay from "@/components/layout/Filter/Overlay";
 export default function Home() {
   return (
     <main className="pt-10 container flex flex-col">
-      <TransactionProvider>
-        <div className="flex justify-between flex-wrap">
-          <div>
-            <Withdraw />
-            <Chart />
-          </div>
-          <Figures />
+      <div className="flex justify-between flex-wrap">
+        <div
+        className="pt-32 pb-32"
+        >
+          <Withdraw />
+          <Chart />
         </div>
-       <Transactions />
-        <Filter />
-        <Overlay />
-      </TransactionProvider>
+        <Figures />
+      </div>
+      <Transactions />
+      <Filter />
+      <Overlay />
     </main>
   );
 }

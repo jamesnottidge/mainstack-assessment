@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import Navbar from "@/components/layout/navbar/Navbar";
 import "./globals.css";
 import { Toolset } from "@/components/layout/Toolset/Toolset";
+import TransactionProvider from "@/contexts/TransactionContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,9 +20,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <TransactionProvider>
         <Navbar />
         <Toolset />
         {children}
+        </TransactionProvider>
       </body>
     </html>
   );

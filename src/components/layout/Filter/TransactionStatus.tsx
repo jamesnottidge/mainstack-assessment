@@ -1,3 +1,4 @@
+//@ts-nocheck
 "use client";
 import React from "react";
 import {
@@ -7,22 +8,26 @@ import {
 } from "@/components/ui/popover";
 import CheckBoxOption from "./CheckBoxOption";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { useTransactionProvider } from "@/contexts/TransactionContext";
+import { Capitalize } from "@/lib/utils";
 
 const TrasactionStatus = () => {
+  const { filterStatuses, setFilterStatuses } = useTransactionProvider();
   const [isOpen, setIsOpen] = React.useState(false);
-  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
   const handleOpenChange = (open: boolean) => {
     setIsOpen(open);
   };
 
   const options = [
-    { id: 1, label: "Successful", checked: false },
-    { id: 2, label: "Pending", checked: false },
-    { id: 3, label: "Failed", checked: false }
+    { id: 1, label: "successful", checked: false },
+    { id: 2, label: "pending", checked: false },
+    { id: 3, label: "failed", checked: false },
   ];
 
   return (
-    <div>
+    <div 
+    className=""
+    >
       <div className="w-full mt-6 mb-2">
         <p className="font-semibold">Transaction Status</p>
       </div>
@@ -34,8 +39,8 @@ const TrasactionStatus = () => {
             }`}
           >
             <span className="truncate text-xs my-auto">
-              {selectedOptions.length > 0
-                ? selectedOptions.join(", ")
+              {filterStatuses.length > 0
+                ? filterStatuses.join(", ")
                 : "Select transaction status"}
             </span>
             {isOpen ? (
@@ -48,20 +53,20 @@ const TrasactionStatus = () => {
         <PopoverContent
           side="bottom"
           align="center"
-          className="w-[30vw] max-w-[570px] border-none "
+          className=" w-[70vw] sm:w-[30vw] max-w-[570px] border-none z-[35]"
         >
           {options.map((option) => (
             <CheckBoxOption
               key={option.id}
               id={option.id.toString()}
-              label={option.label}
-              checked={selectedOptions.includes(option.label)}
+              label={Capitalize(option.label)}
+              checked={filterStatuses.includes(option.label)}
               onChange={(checked) => {
                 if (checked) {
-                  setSelectedOptions([...selectedOptions, option.label]);
+                  setFilterStatuses([...filterStatuses, option.label]);
                 } else {
-                  setSelectedOptions(
-                    selectedOptions.filter((item) => item !== option.label)
+                  setFilterStatuses(
+                    filterStatuses.filter((item: any) => item !== option.label)
                   );
                 }
               }}

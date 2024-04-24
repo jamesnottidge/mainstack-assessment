@@ -12,6 +12,8 @@ import {
   ChartData,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
+import { useTransactionProvider } from "@/contexts/TransactionContext";
+import { getDateArray } from "@/lib/utils";
 
 ChartJS.register(
   CategoryScale,
@@ -24,12 +26,17 @@ ChartJS.register(
 );
 
 const SmoothLineChart = () => {
+  const { filteredTransactions } = useTransactionProvider();
+  const transactionData = filteredTransactions.map((transaction: any) => {
+    return transaction.amount;
+  });
+  const labels = getDateArray(filteredTransactions);
   const data = {
-    labels: ["January", "", "", "", "", "", "July"],
+    labels: [...labels],
     datasets: [
       {
         label: "Data",
-        data: [65, 59, 80, 81, 56, 55, 40],
+        data: [...transactionData],
         fill: false,
         backgroundColor: "rgba(75,192,192,0.2)",
         borderColor: "rgba(75,192,192,1)",
@@ -39,7 +46,7 @@ const SmoothLineChart = () => {
     ],
   };
   const options = {
-    // maintainAspectRatio: false,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         display: false,

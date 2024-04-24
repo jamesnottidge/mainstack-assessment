@@ -18,8 +18,8 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <button
       onClick={() => onClick && onClick(id)}
-      className={`px-4 py-4 rounded-full focus:outline-none flex ${
-        activeButtonId === id ? "bg-black text-white" : "text-gray-500"
+      className={`lg:px-6 lg:py-4 px-4 py-2 rounded-full focus:outline-none font-normal flex items-center text-[16px] ${
+        activeButtonId === id ? "bg-black text-white " : "text-gray-500"
       }`}
     >
       {icon}

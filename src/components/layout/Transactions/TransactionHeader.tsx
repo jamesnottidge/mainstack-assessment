@@ -2,14 +2,18 @@
 import React from "react";
 import { TransactionContext } from "@/contexts/TransactionContext";
 import { UilAngleDown, UilImport } from "@iconscout/react-unicons";
+import { useTransactionProvider } from "@/contexts/TransactionContext";
 
 const TransactionHeader = () => {
-  const { setShowFilter } = React.useContext(TransactionContext);
+  const { setShowFilter, filteredTransactions } = useTransactionProvider();
   return (
     <>
-      <div className="flex justify-between items-center">
+      <div className="flex flex-wrap justify-between items-center mt-4">
         <div>
-          <p className="text-2xl font-extrabold">24 Transactions</p>
+          <p className="  sm:text-2xl  font-extrabold">
+            {filteredTransactions ? filteredTransactions.length : 0}{" "}
+            Transactions
+          </p>
           <p className="text-gray-500 text-xs">
             Your transactions for the last 7 days
           </p>

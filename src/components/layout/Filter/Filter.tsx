@@ -9,17 +9,21 @@ import DateRange from "./DateRange";
 import TransactionType from "./TransactionType";
 import TrasactionStatus from "./TransactionStatus";
 import { UilTimes } from "@iconscout/react-unicons";
+import { useTransactionProvider } from "@/contexts/TransactionContext";
 
 export default function Filter() {
-  const { showFilter, setShowFilter } = useContext(TransactionContext);
+  const { handleFilterApply,handleFilterClear, showFilter, setShowFilter } =
+    useTransactionProvider();
 
   const handleClear = () => {
     setShowFilter(false);
-  }
+    handleFilterClear();
+  };
 
   const handleApply = () => {
     setShowFilter(false);
-  }
+    handleFilterApply();
+  };
 
   return (
     <AnimatePresence>
@@ -29,7 +33,7 @@ export default function Filter() {
           animate={{ x: "0" }}
           exit={{ x: "100%" }}
           transition={{ duration: 0.5 }}
-          className={`fixed right-3 top-5 bottom-5 w-[32vw] min-w-[350px] max-w-[600px] overflow-y-scroll bg-white z-[40] text-black 
+          className={`fixed right-3 top-5 bottom-5 w-[32vw] min-w-[350px] max-w-[600px] overflow-y-scroll bg-white z-[30] text-black 
           p-6 shadow-lg rounded-lg
           `}
         >
@@ -48,15 +52,17 @@ export default function Filter() {
             <div className="flex-grow flex flex-col justify-end">
               <div className="flex justify-between">
                 <button
+                onClick={handleClear}
                   className={`px-20 py-4 rounded-full focus:outline-none
-                hover:bg-gray-200 hover:text-black w-7/12
+                hover:bg-gray-200 hover:text-black w-5/12 flex justify-center
             `}
                 >
                   <span className="text-sm">Clear</span>
                 </button>
                 <button
+                onClick={handleApply}
                   className={`px-20 py-4 rounded-full focus:outline-none
-                bg-black text-white w-7/12
+                bg-black text-white w-5/12 flex justify-center
                 `}
                 >
                   <span className="text-sm">Apply</span>

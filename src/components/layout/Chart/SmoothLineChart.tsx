@@ -77,7 +77,13 @@ const SmoothLineChart = () => {
     },
   };
 
-  return <Line data={data as ChartData<"line">} options={options} />;
+  return (
+    <Line
+      data={data as ChartData<"line">}
+      options={options}
+      data-testid="chart-canvas"
+    />
+  );
 };
 
 export default SmoothLineChart;

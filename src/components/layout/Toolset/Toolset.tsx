@@ -7,7 +7,7 @@ import StoreIcon from "@/components/ui/StoreIcon";
 
 export const Toolset = () => {
   return (
-    <div className="fixed left-4 top-1/3 flex flex-col justify-between h-[20vh] border border-gray-200 py-4 px-2 rounded-full">
+    <div className="fixed left-4 top-1/3 flex flex-col justify-between h-[20vh] border border-gray-200 py-4 px-2 rounded-full bg-white">
       <Tool 
         icon={<LinkIcon />}
         text="Link In Bio"

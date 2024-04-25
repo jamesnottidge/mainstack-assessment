@@ -113,6 +113,7 @@ const Button = ({ active, setActive }: { active: boolean; setActive: any }) => {
           <div className="h-12 w-px mx-4 bg-white"></div>
           <p className="py-2 flex items-center">
             <span className="ml-2 font-normal text-sm">Link In Bio</span>
+            <UilAngleDown className="ml-2 font-normal w-4 h-4" />
           </p>
         </>
       )}

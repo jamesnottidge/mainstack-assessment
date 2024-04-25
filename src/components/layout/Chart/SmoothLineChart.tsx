@@ -39,7 +39,7 @@ const SmoothLineChart = () => {
         data: [...transactionData],
         fill: false,
         backgroundColor: "rgba(75,192,192,0.2)",
-        borderColor: "rgba(75,192,192,1)",
+        borderColor: "#FF5403",
         cubicInterpolationMode: "monotone", // Smooth curve
         pointRadius: 0,
       },
